@@ -50,6 +50,7 @@ var  displayQuestion = function(data){
     
 }
 
+
 var startTimer = function() {
 
     var timeInterval = setInterval(function() {
@@ -60,14 +61,19 @@ var startTimer = function() {
 
 var startQuiz = function () {
     startSectionEl.remove();
-
     startTimer(); 
-
-    displayQuestion();
-
+    // starting to build the for loop here, but I'm not sure this is the correct place
+    for (var i = 0; i < questions.length; i++) {
+        displayQuestion(questions[i]);
+        if (i = 0 && getElementById)
+    }
 };
 
 
+//displayQuestion({
+  //  title: 'A very useful tool during development and debugging for printing content to the debugger is:',
+  //  answers: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"]
+//})
 
 
 
