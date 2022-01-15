@@ -43,12 +43,19 @@ var  displayQuestion = function(data){
     mainSectionEl.append(answerThree)
     mainSectionEl.append(answerFour)
 
-    answerOne.addEventListener("click");
-    answerTwo.addEventListener("click");
-    answerThree.addEventListener("click");
-    answerFour.addEventListener("click");
+    answerOne.addEventListener("click", takeQuiz);
+    answerTwo.addEventListener("click",takeQuiz);
+    answerThree.addEventListener("click",takeQuiz);
+    answerFour.addEventListener("click",takeQuiz);
     
 }
+
+var takeQuiz = function() {
+    for (var i = o; i < questions.length; i++) {
+        displayQuestion(questions[i]);
+    }
+
+};
 
 
 var startTimer = function() {
@@ -57,16 +64,12 @@ var startTimer = function() {
         timerEl.textContent = "Time left: " + timeLeft + ".";
         timeLeft--;
     }, 1000);
-}
+};
 
 var startQuiz = function () {
     startSectionEl.remove();
     startTimer(); 
-    // starting to build the for loop here, but I'm not sure this is the correct place
-    for (var i = 0; i < questions.length; i++) {
-        displayQuestion(questions[i]);
-        if (i = 0 && getElementById)
-    }
+    displayQuestion(answers);
 };
 
 
