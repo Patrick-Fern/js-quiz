@@ -5,15 +5,15 @@ var timerEl = document.getElementById("countdown")
 var timeLeft = 75
 var questions = [
     {title: 'Commonly used date types DO NOT include:',
-    answers: ["1. Strings", "2. Booleans", "3. Buttons", "4. Nubmbers"]},
+    answer: ["1. Strings", "2. Booleans", "3. Buttons", "4. Nubmbers"]},
     {title: 'The condition in an if / else statement is enclosed with ______',
-    answers: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"]},
+    answer: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"]},
     {title: 'Arrays in JavaScript can be used to store',
-    answers: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"]}, 
+    answer: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"]}, 
     {title: 'String values must be enclosed within ______ when being assigned to variables.',
-    answers: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"]},
+    answer: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"]},
     {title: 'A very useful tool during development and debugging for printing content to the debugger is:',
-    answers: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"]}
+    answer: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"]}
 ]
 
 var  displayQuestion = function(data){
@@ -30,10 +30,10 @@ var  displayQuestion = function(data){
     answerFour.setAttribute("id", "btn4");
 
 
-    answerOne.append(data.answers[0]);
-    answerTwo.append(data.answers[1]);
-    answerThree.append(data.answers[2]);
-    answerFour.append(data.answers[2]);
+    answerOne.append(data.answer[0]);
+    answerTwo.append(data.answer[1]);
+    answerThree.append(data.answer[2]);
+    answerFour.append(data.answer[3]);
 
     questionTitle.append(data.title);
 
@@ -51,7 +51,7 @@ var  displayQuestion = function(data){
 }
 
 var takeQuiz = function() {
-    for (var i = o; i < questions.length; i++) {
+    for (var i = 0; i < questions.length; i++) {
         displayQuestion(questions[i]);
     }
 
@@ -69,7 +69,7 @@ var startTimer = function() {
 var startQuiz = function () {
     startSectionEl.remove();
     startTimer(); 
-    displayQuestion(answers);
+    takeQuiz();
 };
 
 
