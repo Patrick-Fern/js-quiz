@@ -1,61 +1,39 @@
 var startEl = document.querySelector("#start-quiz");
 var mainSectionEl = document.querySelector("#main-section");
 var startSectionEl =  document.querySelector("#start-section");
-var timerEl = document.getElementById("countdown")
+var answerBtnEl = document.querySelector(".btn");
+var timerEl = document.getElementById("countdown");
+var questionEl = document.querySelector("#question");
 var timeLeft = 75
 var questions = [
     {title: 'Commonly used date types DO NOT include:',
-    answer: ["1. Strings", "2. Booleans", "3. Buttons", "4. Nubmbers"]},
+    answer: [ a: "1. Strings", b: "2. Booleans", c: "3. Buttons", d: "4. Nubmbers"], correctAnswer: "c",},
     {title: 'The condition in an if / else statement is enclosed with ______',
-    answer: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets"]},
+    answer: [ a: "1. quotes", b: "2. curly brackets", c: "3. parenthesis", d: "4. square brackets"], correctAnswer: "c", },
     {title: 'Arrays in JavaScript can be used to store',
-    answer: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"]}, 
+    answer: [ a: "1. numbers and strings", b: "2. other arrays", c: "3. booleans", d: "4. all of the above"], correctAnswer: "d",}, 
     {title: 'String values must be enclosed within ______ when being assigned to variables.',
-    answer: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis"]},
+    answer: [ a: "1. commas", b: "2. curly brackets", c: "3. quotes", d: "4. parenthesis"], correctAnswer: "c",},
     {title: 'A very useful tool during development and debugging for printing content to the debugger is:',
-    answer: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"]}
+    answer: [ a: "1. JavaScript", b: "2. terminal/bash", c: "3. for loops", d: "4. console.log"], correctAnswer: "d"},
 ]
+var questionIndex = 0;
 
-var  displayQuestion = function(data){
-    var questionTitle = document.createElement('h1');
-    var answerOne = document.createElement('button');
-    var answerTwo = document.createElement('button');
-    var answerThree = document.createElement('button');
-    var answerFour = document.createElement('button');
+var renderQuestions = function () {
+    if (questionIndex >= questions.length) return;
+    var q = questions[questionIndex];
 
-    answerOne.setAttribute("id", "btn1");
-    answerTwo.setAttribute("id", "btn2");
-    answerThree.setAttribute("id", "btn3");
-    answerFour.setAttribute("id", "btn4");
-
-
-    answerOne.append(data.answer[0]);
-    answerTwo.append(data.answer[1]);
-    answerThree.append(data.answer[2]);
-    answerFour.append(data.answer[3]);
-
-    questionTitle.append(data.title);
-
-    mainSectionEl.append(questionTitle)
-    mainSectionEl.append(answerOne)
-    mainSectionEl.append(answerTwo)
-    mainSectionEl.append(answerThree)
-    mainSectionEl.append(answerFour)
-
-    answerOne.addEventListener("click", takeQuiz);
-    answerTwo.addEventListener("click",takeQuiz);
-    answerThree.addEventListener("click",takeQuiz);
-    answerFour.addEventListener("click",takeQuiz);
-    
+    questionEl.innerHTML = q.title;
+    Object.entries(q.answer).forEach(([letter,text]) => {
+        const but = document.getElementById(letter);
+        but.innerHTML = text
+        but.dataset.correct = q.correctAnswer === letter;
+    })
+    questionIndex++;
 }
+    
 
-var takeQuiz = function() {
-    for (var i = 0; i < questions.length; i++) {
-        
-        displayQuestion(questions[2]);
-    }
 
-};
 
 
 var startTimer = function() {
@@ -68,19 +46,11 @@ var startTimer = function() {
 
 var startQuiz = function () {
     startSectionEl.remove();
+    document.getElementById("question-section").style.display = "flex"; 
+    renderQuestions();
     startTimer(); 
-    displayQuestion(questions[0]);
 
 };
-
-
-//displayQuestion({
-  //  title: 'A very useful tool during development and debugging for printing content to the debugger is:',
-  //  answers: ["1. JavaScript", "2. terminal/bash", "3. for loops", "4. console.log"]
-//})
-
-
-
 
 
 
