@@ -17,7 +17,6 @@ var questions = [
 ]
 
 var  displayQuestion = function(data){
-    console.log('inside create question')
     var questionTitle = document.createElement('h1');
     var answerOne = document.createElement('button');
     var answerTwo = document.createElement('button');
@@ -52,7 +51,8 @@ var  displayQuestion = function(data){
 
 var takeQuiz = function() {
     for (var i = 0; i < questions.length; i++) {
-        displayQuestion(questions[i]);
+        
+        displayQuestion(questions[2]);
     }
 
 };
@@ -69,7 +69,8 @@ var startTimer = function() {
 var startQuiz = function () {
     startSectionEl.remove();
     startTimer(); 
-    takeQuiz();
+    displayQuestion(questions[0]);
+
 };
 
 
