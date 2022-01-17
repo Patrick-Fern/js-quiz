@@ -31,7 +31,21 @@ var renderQuestions = function () {
     })
     questionIndex++;
 }
-    
+
+function checkAnswers(id){
+    if (answerId = questions[questionIndex].correctAnswer){
+      //do correct answer stuff here
+      // call render question function
+      renderQuestions();
+    }
+  
+    if (answerId != questions[questionIndex].correctAnswer){
+      //deduct time, points, etc
+      timeLeft = (timeLeft - 10);
+      //call render question function
+      renderQuestions();
+    }
+  };
 
 var startTimer = function() {
 
@@ -49,15 +63,16 @@ var startQuiz = function () {
 
 };
 
+//var endQuiz = function() {
+  //  if (timeLeft = 0 || questionIndex === 4) {
+
+    //}
+//}
 
 
 startEl.addEventListener("click", startQuiz);
-document.getElementById("buttons").addEventListener("click", function(e){
-    const tgt = e.target;
-    if (!tgt.dataset.correct) {
-        timeLeft = (timeLeft - 10);
-        renderQuestions();
-    } else {
-        renderQuestions();
-    }
-});
+document.getElementById("buttons").addEventListener("click", function (e) {
+    //get id here (you can get it from e.target, just chain on id)
+    var answerId = e.target.getAttribute('id');
+    checkAnswers(id)
+  })
