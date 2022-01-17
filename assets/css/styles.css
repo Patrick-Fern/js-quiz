@@ -1,9 +1,34 @@
+header { 
+    display: flex;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    justify-content: space-between;
+    padding: 40px;
+
+}
+
 #main-section {
     display: flex;
 }
 
 .centered {
     justify-content: center;
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
 .btn {

@@ -5,6 +5,7 @@ var answerBtnEl = document.querySelector(".btn");
 var timerEl = document.getElementById("countdown");
 var questionEl = document.querySelector("#question");
 var timeLeft = 75
+var score = []
 var questions = [
     {title: 'Commonly used date types DO NOT include:',
     answer: { a: "1. Strings", b: "2. Booleans", c: "3. Buttons", d: "4. Nubmbers"}, correctAnswer: "c",},
@@ -29,20 +30,18 @@ var renderQuestions = function () {
         but.innerHTML = text
         but.dataset.correct = q.correctAnswer === letter;
     })
-    questionIndex++;
-}
+};
 
 function checkAnswers(id){
-    if (id = questions[questionIndex].correctAnswer){
-      
-      
-      renderQuestions();
+    if (id === questions[questionIndex].correctAnswer){
+        questionIndex++;
+        renderQuestions();
     }
-  
-    if (id != questions[questionIndex].correctAnswer){
+    else {
       //deduct time, points, etc
       timeLeft = (timeLeft - 10);
       //call render question function
+      questionIndex++;
       renderQuestions();
     }
   };
@@ -63,12 +62,14 @@ var startQuiz = function () {
 
 };
 
-//var endQuiz = function() {
-  //  if (timeLeft = 0 || questionIndex === 5) {
+var endQuiz = function() {
+  if (questionIndex >= 4 || timeLeft === 0) {
 
-    //}
-//}
-
+    document.getElementById("question-section").style.display = "none";
+    document.getElementById("score-section").style.display = "flex";
+  };
+};
+endQuiz();
 
 startEl.addEventListener("click", startQuiz);
 document.getElementById("buttons").addEventListener("click", function (e) {
