@@ -73,6 +73,6 @@ var startQuiz = function () {
 startEl.addEventListener("click", startQuiz);
 document.getElementById("buttons").addEventListener("click", function (e) {
     //get id here (you can get it from e.target, just chain on id)
-    e.target.getAttribute('id');
+    let id = e.target.getAttribute('id');
     checkAnswers(id);
   })
