@@ -33,9 +33,10 @@ var renderQuestions = function () {
 };
 
 var endQuiz = function() {
-    //clearInterval(timeInterval);   
+       
     document.getElementById("question-section").style.display = "none";
     document.getElementById("score-section").style.display = "flex";
+    clearInterval(startTimer);
   };
 
 function checkAnswers(id){
