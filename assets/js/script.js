@@ -32,25 +32,39 @@ var renderQuestions = function () {
     })
 };
 
+var endQuiz = function() {
+    //clearInterval(timeInterval);   
+    document.getElementById("question-section").style.display = "none";
+    document.getElementById("score-section").style.display = "flex";
+  };
+
 function checkAnswers(id){
-    if (id === questions[questionIndex].correctAnswer){
+    if (questionIndex >= 4) {
+        endQuiz();
+    } 
+    else{
+        if (id === questions[questionIndex].correctAnswer){
+            questionIndex++;
+            renderQuestions();
+        }
+        else {
+        //deduct time, points, etc
+        timeLeft = (timeLeft - 10);
+        //call render question function
         questionIndex++;
         renderQuestions();
+        }
     }
-    else {
-      //deduct time, points, etc
-      timeLeft = (timeLeft - 10);
-      //call render question function
-      questionIndex++;
-      renderQuestions();
-    }
-  };
+};
 
 var startTimer = function() {
 
     var timeInterval = setInterval(function() {
         timerEl.textContent = "Time left: " + timeLeft + ".";
         timeLeft--;
+        if (timeLeft <= 0) {
+            endQuiz();
+        }
     }, 1000);
 };
 
@@ -61,15 +75,6 @@ var startQuiz = function () {
     startTimer(); 
 
 };
-
-var endQuiz = function() {
-  if (questionIndex >= 4 || timeLeft === 0) {
-
-    document.getElementById("question-section").style.display = "none";
-    document.getElementById("score-section").style.display = "flex";
-  };
-};
-endQuiz();
 
 startEl.addEventListener("click", startQuiz);
 document.getElementById("buttons").addEventListener("click", function (e) {
