@@ -79,9 +79,32 @@ var startQuiz = function () {
 
 };
 
+var saveScore = function (){
+    event.preventDefault();
+    var quizerInitial = document.querySelector("input[id='name']").value;
+
+    var scoreObj = {
+        initials: quizerInitial,
+        timeScore: timeLeft
+    }
+    score.push(scoreObj);
+    document.getElementById("score-section").style.display = "none";
+    document.getElementById("display-section").style.display = "flex";
+    document.getElementById("display-scores").innerHTML = JSON.stringify(scoreObj);
+
+};
+
+var storeScore = function () {
+    localStorage.setItem("score", JSON.stringify(score));
+};
+
 startEl.addEventListener("click", startQuiz);
 document.getElementById("buttons").addEventListener("click", function (e) {
     //get id here (you can get it from e.target, just chain on id)
     let id = e.target.getAttribute('id');
     checkAnswers(id);
-  })
+  });
+  document.getElementById("initial").addEventListener("click", saveScore);
+  document.getElementById("go-back").addEventListener("click", function() {
+      window.location.reload();
+  });

@@ -39,6 +39,6 @@ button {
     background-color: violet;
 }
 
-#question-section, #score-section {
+#question-section, #score-section, #display-section {
     display: none;
 }
