@@ -31,11 +31,11 @@ header nav ul li {
     width: 100%;
 }
 
-.btn {
+button {
     background-color: blueviolet;
 }
 
-.btn :hover {
+ button:hover {
     background-color: violet;
 }
 

@@ -5,6 +5,7 @@ var answerBtnEl = document.querySelector(".btn");
 var timerEl = document.getElementById("countdown");
 var questionEl = document.querySelector("#question");
 var timeLeft = 75
+var timeInterval
 var score = []
 var questions = [
     {title: 'Commonly used date types DO NOT include:',
@@ -36,7 +37,8 @@ var endQuiz = function() {
        
     document.getElementById("question-section").style.display = "none";
     document.getElementById("score-section").style.display = "flex";
-    clearInterval(startTimer);
+    clearInterval(timeInterval);
+    document.getElementById("score-line").innerHTML = ("Your final score is " + timeLeft + ".");
   };
 
 function checkAnswers(id){
@@ -60,7 +62,7 @@ function checkAnswers(id){
 
 var startTimer = function() {
 
-    var timeInterval = setInterval(function() {
+        timeInterval = setInterval(function() {
         timerEl.textContent = "Time left: " + timeLeft + ".";
         timeLeft--;
         if (timeLeft <= 0) {
