@@ -33,13 +33,13 @@ var renderQuestions = function () {
 }
 
 function checkAnswers(id){
-    if (answerId = questions[questionIndex].correctAnswer){
-      //do correct answer stuff here
-      // call render question function
+    if (id = questions[questionIndex].correctAnswer){
+      
+      
       renderQuestions();
     }
   
-    if (answerId != questions[questionIndex].correctAnswer){
+    if (id != questions[questionIndex].correctAnswer){
       //deduct time, points, etc
       timeLeft = (timeLeft - 10);
       //call render question function
@@ -64,7 +64,7 @@ var startQuiz = function () {
 };
 
 //var endQuiz = function() {
-  //  if (timeLeft = 0 || questionIndex === 4) {
+  //  if (timeLeft = 0 || questionIndex === 5) {
 
     //}
 //}
@@ -73,6 +73,6 @@ var startQuiz = function () {
 startEl.addEventListener("click", startQuiz);
 document.getElementById("buttons").addEventListener("click", function (e) {
     //get id here (you can get it from e.target, just chain on id)
-    var answerId = e.target.getAttribute('id');
-    checkAnswers(id)
+    e.target.getAttribute('id');
+    checkAnswers(id);
   })
