@@ -18,4 +18,4 @@ https://github.com/Patrick-Fern/js-quiz
 ![Screen-shot-of-JavaScript-quiz-site](./assets/images/Screenshot.png)
 
 ## Contributions
-Made by Patrick Fernbachg 
+Made by Patrick Fernbach
