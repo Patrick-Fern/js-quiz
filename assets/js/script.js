@@ -7,6 +7,7 @@ var questionEl = document.querySelector("#question");
 var timeLeft = 75
 var timeInterval
 var score = []
+ 
 var questions = [
     {title: 'Commonly used date types DO NOT include:',
     answer: { a: "1. Strings", b: "2. Booleans", c: "3. Buttons", d: "4. Nubmbers"}, correctAnswer: "c",},
@@ -79,10 +80,13 @@ var startQuiz = function () {
 
 };
 
-var saveScore = function (){
+var saveScore = function () {
     event.preventDefault();
     var quizerInitial = document.querySelector("input[id='name']").value;
 
+   score = JSON.parse(localStorage.getItem('score')) || [];
+    console.log(score)
+ 
     var scoreObj = {
         initials: quizerInitial,
         timeScore: timeLeft
@@ -90,7 +94,17 @@ var saveScore = function (){
     score.push(scoreObj);
     document.getElementById("score-section").style.display = "none";
     document.getElementById("display-section").style.display = "flex";
-    document.getElementById("display-scores").innerHTML = JSON.stringify(scoreObj);
+
+    storeScore();
+
+    for(var i = 0; i < score.length; i++){
+
+        var pTag = document.createElement('p');
+        pTag.append(`Initial: ${score[i].initials} - Score: ${score[i].timeScore}`) 
+
+        document.getElementById("display-scores").append(pTag)
+    }
+
 
 };
 
